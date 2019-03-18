@@ -1,2 +1,2 @@
-###[Transmission-From-Mobile](https://bernie40916.github.io/transmission-from-mobile/)
+[Transmission-From-Mobile](https://bernie40916.github.io/transmission-from-mobile/)
  
