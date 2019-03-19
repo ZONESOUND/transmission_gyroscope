@@ -116,7 +116,7 @@ function draw() {
     stopAnime(0);
   }
 
-  if (values.xyzA > 30) {
+  if (values.xyzA > 100) {
     stopAnime(1);
   }
 
@@ -155,7 +155,7 @@ function sendOsc(address, message) {
 
 function checkHit(t) {
   setTimeout(function () {
-    if (countHit - t > 1) {
+    if (countHit - t > 2) {
       temp = countHit - t;
       // sendOsc("/testGyro/hit", "hit");
       console.log("hit");
