@@ -17,8 +17,8 @@ html, body {
 #guide {
 	filter: invert(100%);
 	position: absolute;
-	width: 70%;
-	height: 70%;
+	width: 80%;
+	height: 80%;
 	margin: auto;
 	top: 0;
 	right: 0;
@@ -34,7 +34,7 @@ html, body {
 	top: 0;
 	margin: 0 auto;
 	vertical-align: middle;
-  	top: 50%
+  	top: 30%
   	-ms-transform: translateY(50%);
   	transform: translateY(50%);
   	z-index: 2;
@@ -53,7 +53,7 @@ img {
 	z-index: 2;
 	position: relative;
 	width: 100%;
-	margin-top: 5%;
+	margin-top: 3%;
 	text-align: center;
 }
 
