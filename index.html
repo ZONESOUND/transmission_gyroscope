@@ -6,25 +6,34 @@
   <title>One-Way Transmission (Mobile User)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  
-      <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.3.3/rxjs.umd.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
-  
+	<!--<script defer src="https://cdn.JsDelivr.net/npm/p5"></script>
+  	<script defer src="https://cdn.JsDelivr.net/npm/p5/lib/addons/p5.dom.min.js"></script>-->
+  	<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js'></script>
+	<script src="lib/anime.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/guide.js"></script>
+
 </head>
 
 <body>
-
-  
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.3.3/rxjs.umd.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js'></script>
-
-  
-
-    <script  src="js/index.js"></script>
-
-
-
+	
+	<div id="guide" class="guide">
+		<div id="guide_inside">
+			<!-- <img id="move" src="src/smartphone.png"/> -->
+			<img id="move" src="https://i.imgur.com/NtSrK25.png"/>
+			<div id="text">
+				<span id="shake" class="big_text">SHAKE</span></br>
+				<span id="sound">to create sound</span>
+			</div>
+		</div>
+	</div>
+  	<div id="canvas"></div>
+    
 
 </body>
 

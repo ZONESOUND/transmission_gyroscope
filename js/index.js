@@ -36,11 +36,22 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
 
 var g, g1, g2, guide;
 var phoneImg;
+var phoneVideo;
+
 function setup() {
+
   g = createCanvas(windowWidth, windowHeight);
+  g.parent("#canvas")
   g1 = createGraphics(windowWidth, windowHeight);
   g2 = createGraphics(windowWidth, windowHeight);
+  guide = createGraphics(windowWidth, windowHeight);
+  //phoneImg = loadImage('https://www.pngrepo.com/png/5145/170/hand-graving-smartphone.png');
+  //phoneImg = loadImage('src/smartphone.png');
+  // phoneVideo = createVideo('src/shake_phone.mov');
+  // phoneVideo.size(100, 100)
+  // phoneVideo.loop();
   frameRate(120);
+  //$("video").play();
 }
 
 var values = {
@@ -55,7 +66,9 @@ var countHit = 0;
 
 let lastTriggerTime = 0;
 function draw() {
-
+  //phoneVideo.play();
+  //phoneVideo.position(100, 100);
+  
   g1.background(0);
   g1.noStroke();
   g1.fill(255);
@@ -77,7 +90,7 @@ function draw() {
   }
   values.v = values.p - values.lastP;
   values.a = values.v - values.lastV;
-
+  if (!isMobile) values.xyzA = values.a;
 
   g1.push();
   g1.translate(width / 2 - 50, height / 2);
@@ -100,8 +113,7 @@ function draw() {
     lastTriggerTime = frameCount;
     checkHit(countHit);
     countHit++;
-
-
+    stopAnime(0);
   }
 
   g1.pop();
@@ -127,7 +139,6 @@ function draw() {
 }
 
 
-
 function sendOsc(address, message) {
 
   socket.emit("osc", {
@@ -135,5 +146,18 @@ function sendOsc(address, message) {
     args: [
     { value: message }] });
 
+}
+
+
+function checkHit(t) {
+  setTimeout(function () {
+    if (countHit - t > 2) {
+      temp = countHit - t;
+      // sendOsc("/testGyro/hit", "hit");
+      console.log("hit");
+      stopAnime(1);
+    }
+    countHit = t;
+  }, 500);
 
 }
