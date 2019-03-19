@@ -151,13 +151,13 @@ function sendOsc(address, message) {
 
 function checkHit(t) {
   setTimeout(function () {
-    if (countHit - t > 2) {
+    if (countHit - t > 1) {
       temp = countHit - t;
       // sendOsc("/testGyro/hit", "hit");
       console.log("hit");
       stopAnime(1);
     }
     countHit = t;
-  }, 500);
+  }, 600);
 
 }
