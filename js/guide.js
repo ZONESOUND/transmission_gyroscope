@@ -61,7 +61,7 @@ function restartAnime() {
 }
 
 function upAndDrop() {
-
+	start = false;
 	var myTimeline = anime.timeline();
 	myTimeline.add(up);
 	myTimeline.add(drop);
@@ -71,10 +71,10 @@ function upAndDrop() {
 
 function stopAnime(s) {
 	console.log("state:" + state);
-	if (state == s) {
+	if (state == s && start) {
 		//alert(s);
 		clearTimeout(timeout);
-		if (state == 0 && start) {
+		if (state == 0) {
 			console.log("stop1");
 			state++;
 			animation = animation2;
