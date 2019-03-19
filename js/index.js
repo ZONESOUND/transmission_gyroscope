@@ -116,7 +116,7 @@ function draw() {
     stopAnime(0);
   }
 
-  if (values.xyzA > 70) {
+  if (values.xyzA > 50) {
     stopAnime(1);
   }
 
