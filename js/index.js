@@ -116,6 +116,10 @@ function draw() {
     stopAnime(0);
   }
 
+  if (values.xyzA > 70) {
+    stopAnime(1);
+  }
+
   g1.pop();
 
   sendOsc("/testGyro/a", values.xyzA * 3);
