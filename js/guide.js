@@ -19,38 +19,42 @@ var state = 0;
 var timeout = null;
 var start = false;
 $(window).bind("load", function() {	
-
-	animation = anime({
-	  targets: "#move",
-	  // rotate: 50,
-	  rotateZ: [-15, 40],
-	  duration: 500,
-	  easing: 'easeInQuad',
-	  loop: 4,
-	  direction: 'alternate',
-	  autoplay: false
-	})
-
-	animation2 = anime({
-	  targets: "#move",
-	  // rotate: 50,
-	  rotateZ: [-30, 100],
-	  duration: 400,
-	  easing: 'easeInCirc',
-	  loop: 6,
-	  direction: 'alternate',
-	  autoplay: false
-	})
-
-	anime(drop);
-	// $("#move").css("z-index", "5");
-
-	setTimeout(function() {
-		restartAnime();
-	}, 1000)
+	//startAnime();
 
 	//restartAnime();
 })
+
+function startAnime() {
+
+	animation = anime({
+		targets: "#move",
+		// rotate: 50,
+		rotateZ: [-15, 40],
+		duration: 500,
+		easing: 'easeInQuad',
+		loop: 4,
+		direction: 'alternate',
+		autoplay: false
+	  })
+  
+	  animation2 = anime({
+		targets: "#move",
+		// rotate: 50,
+		rotateZ: [-30, 100],
+		duration: 400,
+		easing: 'easeInCirc',
+		loop: 6,
+		direction: 'alternate',
+		autoplay: false
+	  })
+  
+	  anime(drop);
+	  // $("#move").css("z-index", "5");
+  
+	  setTimeout(function() {
+		  restartAnime();
+	  }, 1000)
+}
 
 function restartAnime() {
 	animation.restart();

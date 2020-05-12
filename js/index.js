@@ -1,7 +1,8 @@
 var isMobile = false;
 var orientationData = { gamma: 0, beta: 0, alpha: 0 };
 var motionData = { z: 0, y: 0, x: 0, zr: 0 };
-var socket = io("https://awiclass.monoame.com:4040");
+//var socket = io("https://awiclass.monoame.com:4040");
+var socket = io('https://gps-250305.appspot.com/');
 var temp = 0;
 function orientation(event) {
   if (event.gamma) {
@@ -22,17 +23,58 @@ function handleMotion(event) {
 
 }
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-  isMobile = true;
-  if (window.DeviceOrientationEvent) {
-    window.addEventListener("deviceorientation", orientation, false);
-  } else {
-    console.log("DeviceOrientationEvent is not supported");
+let firstClick = true;
+$(document).on('click','body *',function(){
+  if (firstClick) {
+    console.log('click');
+    grantDeviceOrient();
+    firstClick = false;
+    $('#guide').show();
+    startAnime();
   }
-  if (window.DeviceMotionEvent) {
-    window.addEventListener("devicemotion", handleMotion, true);
+});
+
+async function grantDeviceOrient() {
+  //console.log('~');
+    let grant = false;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            // iOS 13+
+            let response;
+            try {
+                response = await DeviceOrientationEvent.requestPermission()
+            } catch(err) {
+                //handle hint page here
+                console.error(err);
+            }
+            
+            if (response == 'granted') {
+                 grant = addDeviceEvent();
+            }
+        
+        } else {
+            // non iOS 13+
+            grant = addDeviceEvent();
+        }
+    }
+    console.log(grant);
+    return grant;
+}
+
+function addDeviceEvent() {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    isMobile = true;
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", orientation, false);
+    } else {
+      console.log("DeviceOrientationEvent is not supported");
+    }
+    if (window.DeviceMotionEvent) {
+      window.addEventListener("devicemotion", handleMotion, true);
+    }
   }
 }
+
 
 var g, g1, g2, guide;
 var phoneImg;
