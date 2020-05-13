@@ -123,7 +123,7 @@ function draw() {
 
   if (isMobile) {
     values.p = orientationData.beta;
-    values.xyzA = Math.sqrt(Math.pow(motionData.x, 2) + Math.pow(motionData.y, 2) + Math.pow(motionData.z, 2));
+    //values.xyzA = Math.sqrt(Math.pow(motionData.x, 2) + Math.pow(motionData.y, 2) + Math.pow(motionData.z, 2));
 
   } else {
 
@@ -132,7 +132,7 @@ function draw() {
   }
   values.v = values.p - values.lastP;
   values.a = values.v - values.lastV;
-  if (!isMobile) values.xyzA = values.a;
+  //if (!isMobile) values.xyzA = values.a;
 
   g1.push();
   g1.translate(width / 2 - 50, height / 2);
@@ -148,7 +148,7 @@ function draw() {
   g1.line(width / 2 - 5, values.lastA, width / 2, values.a);
   g1.ellipse(width / 2, values.a, 3, 3);
 
-  if (values.xyzA > 20 && frameCount - lastTriggerTime > 5) {
+  if (values.a > 20 && frameCount - lastTriggerTime > 5) {
     g1.noStroke();
     g1.fill(255, 100);
     g1.rect(width / 2 + width / 20, 0 - height / 2, -width / 20, height);
@@ -158,13 +158,13 @@ function draw() {
     stopAnime(0);
   }
 
-  if (values.xyzA > 100) {
+  if (values.a > 100) {
     stopAnime(1);
   }
 
   g1.pop();
 
-  sendOsc("/testGyro/a", values.xyzA * 3);
+  sendOsc("/testGyro/a", values.a * 3);
   sendOsc("/testGyro/v", orientationData.gamma);
 
   g2.image(g1, 0, 0);
