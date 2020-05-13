@@ -165,6 +165,7 @@ function draw() {
   g1.pop();
 
   sendOsc("/testGyro/a", values.xyzA * 3);
+  sendOsc("/testGyro/v", orientationData.gamma);
 
   g2.image(g1, 0, 0);
   image(g1, 0, 0, windowWidth, windowHeight);
