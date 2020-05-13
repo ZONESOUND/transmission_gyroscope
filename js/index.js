@@ -156,6 +156,7 @@ function draw() {
     checkHit(countHit);
     countHit++;
     stopAnime(0);
+	sendOsc("/testGyro/hit", 1);
   }
 
   if (values.a > 100) {
