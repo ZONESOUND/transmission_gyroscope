@@ -148,7 +148,7 @@ function draw() {
   g1.line(width / 2 - 5, values.lastA, width / 2, values.a);
   g1.ellipse(width / 2, values.a, 3, 3);
 
-  if (values.a > 30 && frameCount - lastTriggerTime > 10) {
+  if (values.a > 50 && frameCount - lastTriggerTime > 33) {
     g1.noStroke();
     g1.fill(255, 100);
     g1.rect(width / 2 + width / 20, 0 - height / 2, -width / 20, height);
